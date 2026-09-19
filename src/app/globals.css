@@ -23,8 +23,8 @@
   --clr-accent-glow: rgba(200, 151, 58, 0.06);
 
   /* Typography */
-  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), "Courier New", monospace;
+  --font-sans: var(--font-outfit), system-ui, sans-serif;
+  --font-mono: var(--font-space-mono), "Courier New", monospace;
   --font-serif: "Instrument Serif", Georgia, serif;
 
   /* Spacing */
@@ -194,9 +194,9 @@ textarea {
 }
 
 .nav.scrolled {
-  background: rgba(10, 10, 10, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(10, 10, 10, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-color: var(--clr-border);
 }
 
@@ -234,10 +234,12 @@ textarea {
   position: absolute;
   bottom: -2px;
   left: 0;
-  width: 0;
+  width: 100%;
   height: 1px;
   background: var(--clr-accent);
-  transition: width var(--duration-base) var(--ease-out);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform var(--duration-base) var(--ease-out);
 }
 
 .nav-links a:hover {
@@ -245,7 +247,7 @@ textarea {
 }
 
 .nav-links a:hover::after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
 .nav-cta {
@@ -262,6 +264,7 @@ textarea {
 .nav-cta:hover {
   background: var(--clr-accent);
   color: var(--clr-bg);
+  box-shadow: 0 0 16px var(--clr-accent-dim);
 }
 
 .nav-mobile-toggle {
@@ -293,6 +296,7 @@ textarea {
 .hero-grid-lines {
   position: absolute;
   inset: 0;
+  opacity: 0.35;
   background-image: linear-gradient(
       to right,
       var(--clr-border-subtle) 1px,
@@ -550,21 +554,34 @@ textarea {
 }
 
 .about-aside {
-  padding-top: var(--space-8);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--clr-border);
+  border: 1px solid var(--clr-border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: var(--space-16);
 }
 
 .about-stat {
-  padding: var(--space-6) 0;
-  border-bottom: 1px solid var(--clr-border);
+  background: var(--clr-bg);
+  padding: var(--space-8) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: background var(--duration-fast);
 }
 
-.about-stat:first-child {
-  border-top: 1px solid var(--clr-border);
+.about-stat:hover {
+  background: var(--clr-surface);
 }
 
 .about-stat-number {
   font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-size: clamp(2rem, 3.5vw, 3rem);
   font-style: italic;
   color: var(--clr-accent);
   line-height: 1;
@@ -605,7 +622,7 @@ textarea {
 .skill-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
+  gap: var(--space-3);
 }
 
 .skill-tag {
@@ -911,6 +928,11 @@ textarea {
   width: 100%;
 }
 
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #777777;
+}
+
 .form-input:focus,
 .form-textarea:focus {
   border-color: var(--clr-accent);
@@ -1099,6 +1121,125 @@ textarea {
   }
 }
 
+/* ── Projects Hub Page ────────────────────────────────────── */
+.projects-page {
+  padding-top: var(--space-32);
+  padding-bottom: var(--space-32);
+  min-height: 100dvh;
+}
+
+.projects-page-header {
+  margin-bottom: var(--space-16);
+  max-width: 600px;
+}
+
+.projects-page-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--clr-text);
+  margin-bottom: var(--space-4);
+}
+
+.projects-page-header p {
+  color: var(--clr-text-secondary);
+  font-size: 1.125rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-8);
+}
+
+.project-preview-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--clr-bg);
+  border: 1px solid var(--clr-border);
+  text-decoration: none;
+  transition: border-color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+  position: relative;
+}
+
+.project-preview-card:hover {
+  border-color: var(--clr-border-hover);
+  transform: translateY(-4px);
+  background: var(--clr-surface);
+}
+
+.project-preview-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-bottom: 1px solid var(--clr-border);
+  overflow: hidden;
+}
+
+.project-preview-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+.project-preview-card:hover .project-preview-overlay {
+  opacity: 1;
+}
+
+.project-preview-cta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clr-accent);
+  background: var(--clr-surface-2);
+  padding: var(--space-3) var(--space-6);
+  border: 1px solid var(--clr-border-hover);
+  transform: translateY(10px);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.project-preview-card:hover .project-preview-cta {
+  transform: translateY(0);
+}
+
+.project-preview-content {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.project-preview-meta {
+  margin-bottom: var(--space-3);
+}
+
+.project-preview-card .project-title {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-3);
+  color: var(--clr-text);
+}
+
+.project-preview-card .project-description {
+  font-size: 0.875rem;
+  color: var(--clr-text-secondary);
+  margin-bottom: var(--space-6);
+  flex: 1;
+}
+
+.project-preview-card .project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
 /* ── Ticker / Marquee ────────────────────────────────────── */
 .ticker-wrap {
   border-top: 1px solid var(--clr-border);
@@ -1264,4 +1405,16 @@ textarea {
 .design-portfolio-link:hover {
   background: rgba(200, 151, 58, 0.18);
   border-color: var(--clr-accent);
+}
+
+@media (max-width: 900px) {
+  .about-aside {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .about-aside {
+    grid-template-columns: 1fr;
+  }
 }

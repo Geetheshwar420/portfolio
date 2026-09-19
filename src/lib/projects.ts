@@ -7,6 +7,7 @@ export type Project = {
   live?: string;
   featured: boolean;
   category: string;
+  image: string;
 };
 
 export const projects: Project[] = [
@@ -20,6 +21,7 @@ export const projects: Project[] = [
     live: "https://project-ageis.vercel.app",
     featured: true,
     category: "Security",
+    image: "/projects/project-ageis.svg",
   },
   {
     id: "medconnect",
@@ -30,6 +32,7 @@ export const projects: Project[] = [
     github: "https://github.com/Geetheshwar420/MedConnect",
     featured: true,
     category: "Full-Stack",
+    image: "/projects/medconnect.svg",
   },
   {
     id: "odyssey",
@@ -41,6 +44,7 @@ export const projects: Project[] = [
       "https://github.com/Geetheshwar420/Odyssey-Context-Aware-City-Discovery-Engine",
     featured: true,
     category: "AI / Discovery",
+    image: "/projects/odyssey.svg",
   },
   {
     id: "product-pulse",
@@ -51,6 +55,7 @@ export const projects: Project[] = [
     github: "https://github.com/Geetheshwar420/ProductPulse",
     featured: true,
     category: "Full-Stack",
+    image: "/projects/product-pulse.svg",
   },
   {
     id: "pathfinder-ai",
@@ -61,6 +66,7 @@ export const projects: Project[] = [
     github: "https://github.com/Geetheshwar420/PathFinderAI",
     featured: true,
     category: "Mobile / AI",
+    image: "/projects/pathfinder-ai.svg",
   },
   {
     id: "quantum-shield",
@@ -72,6 +78,7 @@ export const projects: Project[] = [
     live: "https://quantum-sheild-sigma.vercel.app",
     featured: false,
     category: "Security",
+    image: "/projects/quantum-shield.svg",
   },
   {
     id: "scilab-test",
@@ -83,6 +90,7 @@ export const projects: Project[] = [
     live: "https://scilab-test.vercel.app",
     featured: false,
     category: "Web",
+    image: "/projects/scilab-test.svg",
   },
   {
     id: "python-quiz",
@@ -93,6 +101,7 @@ export const projects: Project[] = [
     github: "https://github.com/Geetheshwar420/python-quiz",
     featured: false,
     category: "Education",
+    image: "/projects/python-quiz.svg",
   },
 ];
 

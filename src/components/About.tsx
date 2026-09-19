@@ -123,25 +123,27 @@ export default function About() {
               <div className="about-portrait-overlay" aria-hidden="true" />
             </div>
 
-            <div className="about-aside">
-              {stats.map((stat, i) => (
-                <motion.div
-                  key={stat.label}
-                  className="about-stat"
-                  initial={{ opacity: 0, x: 16 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.3 + i * 0.08,
-                    ease: "easeOut",
-                  }}
-                >
-                  <div className="about-stat-number">{stat.number}</div>
-                  <div className="about-stat-label">{stat.label}</div>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
+        </div>
+
+        {/* Full-width Stats Section */}
+        <div className="about-aside">
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              className="about-stat"
+              initial={{ opacity: 0, y: 24 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{
+                duration: 0.6,
+                delay: 0.4 + i * 0.1,
+                ease: "easeOut",
+              }}
+            >
+              <div className="about-stat-number">{stat.number}</div>
+              <div className="about-stat-label">{stat.label}</div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

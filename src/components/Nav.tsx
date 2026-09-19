@@ -1,13 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
-const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
-];
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -22,17 +17,11 @@ export default function Nav() {
   return (
     <>
       <nav className={`nav ${scrolled ? "scrolled" : ""}`}>
-        <a href="#" className="nav-logo" aria-label="Geetheshwar home">
+        <Link href="/" className="nav-logo" aria-label="Geetheshwar home">
           GSG
-        </a>
+        </Link>
 
-        <ul className="nav-links">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <a href={link.href}>{link.label}</a>
-            </li>
-          ))}
-        </ul>
+
 
         <a href="#contact" className="nav-cta" aria-label="Let's talk">
           Let&apos;s Talk
@@ -76,23 +65,6 @@ export default function Nav() {
             gap: "2rem",
           }}
         >
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "1.25rem",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                color: "var(--clr-text)",
-                textDecoration: "none",
-              }}
-            >
-              {link.label}
-            </a>
-          ))}
           <a
             href="#contact"
             onClick={() => setMenuOpen(false)}

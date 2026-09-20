@@ -288,8 +288,8 @@ textarea {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding-bottom: clamp(var(--space-16), 10vw, var(--space-24));
+  justify-content: center;
+  padding-block: clamp(var(--space-16), 10vw, var(--space-24));
   position: relative;
 }
 

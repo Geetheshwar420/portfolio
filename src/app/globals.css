@@ -1038,8 +1038,11 @@ textarea {
   }
 
   .about-portrait-wrap {
-    aspect-ratio: 3 / 2;
-    max-height: 280px;
+    display: none;
+  }
+
+  .about-right {
+    display: none;
   }
 
   .about-aside {
@@ -1081,17 +1084,6 @@ textarea {
 }
 
 @media (max-width: 600px) {
-  /* Hide all decorative/preview images — content first on mobile */
-  .about-portrait-wrap,
-  .about-right .about-portrait-wrap,
-  .project-preview-image {
-    display: none;
-  }
-
-  .project-preview-card {
-    border-top: 2px solid var(--clr-accent);
-  }
-
   .featured-project {
     grid-template-columns: 1fr;
     gap: var(--space-2);

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { projects } from "@/lib/projects";
 import Nav from "@/components/Nav";
@@ -18,7 +19,7 @@ export default function ProjectsPage() {
             transition={{ duration: 0.6 }}
             style={{ marginBottom: "var(--space-8)" }}
           >
-            <a
+            <Link
               href="/"
               className="btn-secondary"
               style={{ padding: "0.5rem 1rem", fontSize: "0.75rem", display: "inline-flex" }}
@@ -27,7 +28,7 @@ export default function ProjectsPage() {
                 <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               Back to Home
-            </a>
+            </Link>
           </motion.div>
 
           <motion.div
